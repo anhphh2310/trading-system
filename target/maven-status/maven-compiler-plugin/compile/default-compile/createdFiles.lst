@@ -1,0 +1,9 @@
+com\aquariux\tradding_system\domain\model\Transaction.class
+com\aquariux\tradding_system\domain\repository\TransactionRepository.class
+com\aquariux\tradding_system\domain\repository\PriceRepository.class
+com\aquariux\tradding_system\domain\repository\WalletRepository.class
+com\aquariux\tradding_system\TraddingSystemApplication.class
+com\aquariux\tradding_system\domain\model\User.class
+com\aquariux\tradding_system\domain\model\Price.class
+com\aquariux\tradding_system\domain\model\Wallet.class
+com\aquariux\tradding_system\domain\repository\UserRepository.class
