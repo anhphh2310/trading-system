@@ -1,15 +1,13 @@
 package com.aquariux.tradding_system.domain.model;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.UUID;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,10 +17,10 @@ import lombok.Setter;
 public class Wallet {
 
   @Id
-  private UUID id;
+  private Long id;
 
-  @ManyToOne
-  @JoinColumn(name = "user_id", nullable = false)
+  @OneToOne(cascade = CascadeType.ALL)
+  @JoinColumn(name = "user_id", referencedColumnName = "id")
   private User user;
 
   @Column(nullable = false)
@@ -38,9 +36,8 @@ public class Wallet {
   private LocalDateTime updatedAt;
 
   public Wallet() {
-    this.id = UUID.randomUUID();
-    this.balance = BigDecimal.ZERO; // Default balance
-    this.createdAt = LocalDateTime.now(); // Set created_at to the current time
-    this.updatedAt = LocalDateTime.now(); // Set updated_at to the current time
+    this.balance = BigDecimal.ZERO;
+    this.createdAt = LocalDateTime.now();
+    this.updatedAt = LocalDateTime.now();
   }
 }

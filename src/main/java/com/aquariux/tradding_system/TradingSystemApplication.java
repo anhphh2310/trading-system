@@ -2,12 +2,14 @@ package com.aquariux.tradding_system;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
-public class TraddingSystemApplication {
+@EnableScheduling
+public class TradingSystemApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TraddingSystemApplication.class, args);
+		SpringApplication.run(TradingSystemApplication.class, args);
 	}
 
 }

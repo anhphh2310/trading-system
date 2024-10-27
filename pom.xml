@@ -11,7 +11,7 @@
 	<groupId>com.aquariux</groupId>
 	<artifactId>tradding-system</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>tradding-system</name>
+	<name>trading-system</name>
 	<description>Interview project for Aquariux</description>
 	<url/>
 	<licenses>
@@ -29,11 +29,14 @@
 	<properties>
 		<java.version>17</java.version>
 		<lombok.version>1.18.34</lombok.version>
+		<spring-boot.version>3.1.0</spring-boot.version>
+		<mapstruct.version>1.6.2</mapstruct.version>
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<version>${spring-boot.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -54,6 +57,16 @@
 			<artifactId>lombok</artifactId>
 			<version>${lombok.version}</version>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct</artifactId>
+			<version>${mapstruct.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct-processor</artifactId>
+			<version>${mapstruct.version}</version>
 		</dependency>
 	</dependencies>
 

@@ -2,9 +2,8 @@ package com.aquariux.tradding_system.domain.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,13 +11,8 @@ import lombok.Setter;
 @Setter
 @Entity(name = "PRICE")
 public class Price {
+
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
-
-  @Column
-  private String exchange;
-
   @Column(name = "trading_pair")
   private String tradingPair;
 
@@ -27,4 +21,15 @@ public class Price {
 
   @Column(name = "ask_price")
   private double askPrice;
+
+  @Column(name = "created_at", nullable = false)
+  private LocalDateTime createdAt;
+
+  @Column(name = "updated_at")
+  private LocalDateTime updatedAt;
+
+  public Price() {
+    this.createdAt = LocalDateTime.now();
+    this.updatedAt = LocalDateTime.now();
+  }
 }
