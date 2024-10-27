@@ -1,13 +1,17 @@
 package com.aquariux.tradding_system.domain.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Transient;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.UUID;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,8 +19,10 @@ import lombok.Setter;
 @Setter
 @Entity(name = "TRANSACTION")
 public class Transaction {
+
   @Id
-  private UUID id;
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
   @ManyToOne
   @JoinColumn(name = "user_id", nullable = false)
@@ -25,8 +31,9 @@ public class Transaction {
   @Column(nullable = false)
   private String currencyPair;
 
+  @Enumerated(EnumType.STRING)
   @Column(nullable = false)
-  private String transactionType; // "BUY" or "SELL"
+  private TransactionType transactionType; // "BUY" or "SELL"
 
   @Column(nullable = false)
   private BigDecimal amount;
@@ -34,15 +41,14 @@ public class Transaction {
   @Column(nullable = false)
   private BigDecimal price;
 
+  @Transient
   private BigDecimal total;
 
   @Column(name = "created_at", nullable = false)
   private LocalDateTime createdAt;
 
   public Transaction() {
-    this.id = UUID.randomUUID();
     this.createdAt = LocalDateTime.now();
-    this.total = getTotal();
   }
 
   public BigDecimal getTotal() {

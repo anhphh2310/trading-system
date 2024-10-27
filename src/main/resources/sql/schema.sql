@@ -27,9 +27,9 @@ CREATE TABLE TRANSACTION (
 );
 
 CREATE TABLE PRICE (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    exchange VARCHAR(255),
-    trading_pair VARCHAR(255),
+    trading_pair VARCHAR(50) PRIMARY KEY,
     bid_price DOUBLE,
-    ask_price DOUBLE
+    ask_price DOUBLE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )
